@@ -1,4 +1,4 @@
-# Inflearn Spring Study
+# inflearn Spring Study
 목표 : 
 스프링 정복을 목표로 하는 자바 백엔드 개발자를 대상으로 실제 실무에 쓰이는 스프링의 핵심을 완전히 마스터 할 수 있도록 하는 것
 
@@ -11,7 +11,7 @@ Git : Fork <br> <br>
 
 
 ## 스프링 MVC 1 - 백엔드 웹 개발 핵심 기술
-웹 애플리케이션 이해<br>
+웹 애플리케이션 이해<br><br>
 서블릿
 * JSP
 * MVC 패턴
