@@ -19,7 +19,7 @@ public class MemberRepository {
         return instance;
     }
 
-    public MemberRepository() {
+    private MemberRepository() {
     }
 
     public Member save(Member member){
