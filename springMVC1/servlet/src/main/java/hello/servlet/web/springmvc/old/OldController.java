@@ -1,5 +1,6 @@
 package hello.servlet.web.springmvc.old;
 
+import hello.servlet.web.frontcontroller.ModelView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
@@ -12,7 +13,7 @@ public class OldController implements Controller {
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
         System.out.println("OldController.handleRequest");
-        return null;
+        return new ModelAndView("new-form");
     }
-                                                                                                                                                                                                                                                                                                        
+
 }

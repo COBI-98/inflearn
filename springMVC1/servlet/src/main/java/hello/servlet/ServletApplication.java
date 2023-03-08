@@ -12,4 +12,11 @@ public class ServletApplication {
 		SpringApplication.run(ServletApplication.class, args);
 	}
 
+	/* prefix , suffix spring boot가 자동으로 해줌
+	@Bean
+	InternalResourceViewResolver internalResourceView(){
+		return new InternalResourceViewResolver("/WEP-INF/views",".jsp");
+	}
+	*/
+
 }

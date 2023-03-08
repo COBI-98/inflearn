@@ -19,6 +19,7 @@ public class MyView {
         dispatcher.forward(request, response);
     }
 
+    // InternalResourceView -> forward()
     public void render(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         modelToRequestAttribute(model, request);
