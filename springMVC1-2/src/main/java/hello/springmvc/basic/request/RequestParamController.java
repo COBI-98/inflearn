@@ -1,5 +1,6 @@
 package hello.springmvc.basic.request;
 
+import hello.springmvc.basic.HelloData;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Objects;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -87,4 +89,25 @@ public class RequestParamController {
 
         return "ok";
     }
+
+    @ResponseBody
+    @RequestMapping("/model-attribute-v1")
+    public String modelAttributeV1(@ModelAttribute HelloData helloData){
+        // 프젝 사용한건 @ModelAttribute 생략된 상태
+        log.info("username={}, age={}", helloData.getUsername(),helloData.getAge());
+
+        // 보통 검증과 오류에서 70-80% 예외처리에 잘 써야함 spring에서 제공하는것을 사용
+
+        return "ok";
+    }
+
+    @ResponseBody
+    @RequestMapping("/model-attribute-v2")
+    public String modelAttributeV2(HelloData helloData){
+        log.info("username={}, age={}", helloData.getUsername(),helloData.getAge());
+
+        return "ok";
+    }
+
+
 }
