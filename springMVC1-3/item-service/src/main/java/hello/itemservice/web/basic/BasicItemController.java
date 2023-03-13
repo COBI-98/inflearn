@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/basic/items")
@@ -69,7 +70,7 @@ public class BasicItemController {
         return "basic/item";
     }
 
-    @PostMapping("/add")
+    //    @PostMapping("/add")
     public String addItemV4(Item item) {
         itemRepository.save(item);
         // ModelAttribute 도 생략가능 (default
@@ -79,19 +80,36 @@ public class BasicItemController {
         return "basic/item";
     }
 
+    // PRG
+//    @PostMapping("/add")
+    public String addItemV5(Item item) {
+        itemRepository.save(item);
+        return "redirect:/basic/items/" + item.getId();
+    }
+
+    //redirectAttribute
+    @PostMapping("/add")
+    public String addItemV6(Item item, RedirectAttributes redirectAttributes) {
+        Item savedItem = itemRepository.save(item);
+        redirectAttributes.addAttribute("itemId", savedItem.getId());
+        redirectAttributes.addAttribute("status", true);
+        return "redirect:/basic/items/{itemId}";
+    }
+
     @GetMapping("/{itemId}/edit")
-    public String editForm(@PathVariable Long itemId, Model model){
+    public String editForm(@PathVariable Long itemId, Model model) {
         Item item = itemRepository.findById(itemId);
-        model.addAttribute("item",item);
+        model.addAttribute("item", item);
         return "basic/editForm";
     }
 
     @PostMapping("/{itemId}/edit")
-    public String edit(@PathVariable Long itemId, @ModelAttribute Item item){
-        itemRepository.update(itemId,item);
+    public String edit(@PathVariable Long itemId, @ModelAttribute Item item) {
+        itemRepository.update(itemId, item);
         //controller 에서 다시 호출 된 것 redirect
         return "redirect:/basic/items/{itemId}";
     }
+
     /**
      * 테스트용 데이터 추가
      */
