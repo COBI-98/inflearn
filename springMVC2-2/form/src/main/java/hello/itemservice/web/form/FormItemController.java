@@ -2,6 +2,8 @@ package hello.itemservice.web.form;
 
 import hello.itemservice.domain.item.Item;
 import hello.itemservice.domain.item.ItemRepository;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.Banner.Mode;
@@ -19,6 +21,16 @@ import java.util.List;
 public class FormItemController {
 
     private final ItemRepository itemRepository;
+
+    // 이 컨트롤러에 들어올시 model에 자동으로 담김
+    @ModelAttribute("regions")
+    public Map<String, String> regions(){
+        Map<String, String> regions = new LinkedHashMap<>(); // 순서보장
+        regions.put("SEOUL","서울");
+        regions.put("BUSAN","부산");
+        regions.put("JEJU","제주");
+        return regions;
+    }
 
     @GetMapping
     public String items(Model model) {
@@ -46,6 +58,7 @@ public class FormItemController {
     public String addItem(@ModelAttribute Item item, RedirectAttributes redirectAttributes) {
 
         log.info("item.open={}", item.getOpen());
+        log.info("item.regions={}", item.getRegions());
         // checkbox -> "on" -> true
         // checkbox -> 선택이 안되어있따면 값 자체를 보내지 않음
 
