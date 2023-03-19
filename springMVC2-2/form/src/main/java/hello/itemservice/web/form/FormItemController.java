@@ -1,8 +1,10 @@
 package hello.itemservice.web.form;
 
+import hello.itemservice.domain.item.DeliverCode;
 import hello.itemservice.domain.item.Item;
 import hello.itemservice.domain.item.ItemRepository;
 import hello.itemservice.domain.item.ItemType;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +39,15 @@ public class FormItemController {
     public ItemType[] itemTypes(){
         //enum의 모든 정보 배열로 반환
         return ItemType.values();
+    }
+
+    @ModelAttribute("deliveryCodes")
+    public List<DeliverCode> deliverCodes(){
+        List<DeliverCode> deliverCodes = new ArrayList<>();
+        deliverCodes.add(new DeliverCode("FAST", "빠른 배송"));
+        deliverCodes.add(new DeliverCode("NORMAL", "일반 배송"));
+        deliverCodes.add(new DeliverCode("SLOW", "느린 배송"));
+        return deliverCodes;
     }
 
     @GetMapping
