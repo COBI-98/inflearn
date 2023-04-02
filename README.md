@@ -44,6 +44,29 @@ Git : Fork <br> <br>
 파일 업로드
 <br>
 ## 스프링 JPA1 - 웹 애플리케이션 개발
-업데이트 예정<br>
+도메인 분석 설계
+  + 도메인, 테이블 설계
+  + 엔티티 클래스
+
+애플리케이션 아키텍쳐
+
+회원 도메인
+  + Repository
+  + Service
+  + Function
+
+상품 도메인
+  + Entitiy
+  + Repository
+  + service
+  
+주문 도메인
+  + Entity
+  + Repository
+  + Service
+  + Function
+
+웹 계층 개발
+<br>
 ## 스프링 JPA2 - API 개발과 성능 최적화
 업데이트 예정<br>
