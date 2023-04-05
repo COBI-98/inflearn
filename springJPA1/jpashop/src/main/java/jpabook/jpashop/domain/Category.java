@@ -1,9 +1,12 @@
 package jpabook.jpashop.domain;
 
+import static javax.persistence.FetchType.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -33,10 +36,16 @@ public class Category {
     private List<Item> items = new ArrayList<>();
 
     // 다대다 셀프 양방향 걸기
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "parent_id")
     private Category parent;
 
     @OneToMany(mappedBy = "parent")
     private List<Category> child = new ArrayList<>();
+
+    //==연관관계 메서드==//
+    public void addCheckCategory(Category child){
+        this.child.add(child);
+        child.setParent(this);
+    }
 }
