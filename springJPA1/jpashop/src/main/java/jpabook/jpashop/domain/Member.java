@@ -27,7 +27,7 @@ public class Member {
     @Embedded
     private Address address;
 
-//    @JsonIgnore api 조회에서 제외시키기
+    @JsonIgnore // api 조회에서 제외시키기
     @OneToMany(mappedBy = "member") // 읽기전용
     private List<Order> orders = new ArrayList<>(); // 컬렉션은 필드에서 초기화하자. 하이버네이트 내부 매커니즘 문제를발생시킬수있음 바꾸지 말기
 

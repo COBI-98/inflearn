@@ -94,6 +94,16 @@ public class OrderRepository {
         TypedQuery<Order> query = em.createQuery(cq).setMaxResults(1000); //최대1000건
         return query.getResultList();
     }
-
     //  가장 멋진 해결책은 Querydsl 이 존재
+
+    // fetch join
+    public List<Order> findAllWithMemberDelivery() {
+
+        return em.createQuery(
+                "select o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d", Order.class)
+                .getResultList();
+    }
+
 }

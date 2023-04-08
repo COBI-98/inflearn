@@ -34,7 +34,7 @@ public class Order {
 
     @ManyToOne(fetch = LAZY) // FetchType.EAGER = default LAZY 로 변경
     @JoinColumn(name = "member_id")
-    private Member member;
+    private Member member; // = new ProxyMember(); == ByteBuffer~~ > order -> db에서 가져올때 member를 안 건들기에 프록시멤버를 가져옴 멤버를 건들기 시작하면 그때 sql 문을 날려서 조회
 
     //JPQL SELECT O FROM order o; -> SQL select * from order (n+1 문제)
 
