@@ -2,6 +2,7 @@ package jpabook.jpashop.domain;
 
 import static javax.persistence.FetchType.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
 
 @Entity
 @Table(name = "orders")
@@ -38,6 +40,7 @@ public class Order {
 
     //JPQL SELECT O FROM order o; -> SQL select * from order (n+1 문제)
 
+    @BatchSize(size = 1000)
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
 
@@ -97,7 +100,6 @@ public class Order {
     }
 
     //==조회 로직==//
-
     /**
      * 전체 주문 가격 조회
      */
