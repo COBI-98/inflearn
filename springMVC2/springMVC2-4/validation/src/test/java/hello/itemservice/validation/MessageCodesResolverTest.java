@@ -30,4 +30,17 @@ public class MessageCodesResolverTest {
                 "required"
         );
     }
+
+    @Test
+    void messageCodesResolverField2() {
+
+        String[] messageCodes = codesResolver.resolveMessageCodes("range", "item", "price", Integer.class);
+
+        assertThat(messageCodes).containsExactly(
+                "range.item.price",
+                "range.price",
+                "range.java.lang.Integer",
+                "range"
+        );
+    }
 }
