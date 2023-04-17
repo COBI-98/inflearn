@@ -1,5 +1,10 @@
 package jpabook.jpashop.repository;
 
+import static jpabook.jpashop.domain.QMember.member;
+import static jpabook.jpashop.domain.QOrder.order;
+
+import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -13,15 +18,23 @@ import javax.persistence.criteria.Root;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderSearch;
+import jpabook.jpashop.domain.OrderStatus;
+import jpabook.jpashop.domain.QMember;
+import jpabook.jpashop.domain.QOrder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 @Repository
-@RequiredArgsConstructor
 public class OrderRepository {
 
     private final EntityManager em;
+    private final JPAQueryFactory query;
+
+    public OrderRepository(EntityManager em) {
+        this.em = em;
+        this.query = new JPAQueryFactory(em);
+    }
 
     public void save(Order order) {
         em.persist(order);
@@ -95,7 +108,34 @@ public class OrderRepository {
         TypedQuery<Order> query = em.createQuery(cq).setMaxResults(1000); //최대1000건
         return query.getResultList();
     }
+
     //  가장 멋진 해결책은 Querydsl 이 존재
+    public List<Order> findAll(OrderSearch orderSearch) {
+//        QOrder order = QOrder.order;
+//        QMember member = QMember.member;
+
+
+        return query.select(order)
+                .from(order)
+                .join(order.member, member)
+                .where(statusEq(orderSearch.getOrderStatus()), nameLike(orderSearch.getMemberName()))  // , == and(&&) 조건
+                .limit(1000)
+                .fetch();
+    }
+
+    private BooleanExpression statusEq(OrderStatus statusCond){ // 상태가 null이면 버리기 값이 같으면 동적쿼리
+        if (statusCond == null){
+            return null;
+        }
+        return order.status.eq(statusCond);
+    }
+
+    private BooleanExpression nameLike(String memberName) {
+        if (!StringUtils.hasText(memberName)) {
+            return null;
+        }
+        return member.name.like(memberName);
+    }
 
     // fetch join
     public List<Order> findAllWithMemberDelivery() {
