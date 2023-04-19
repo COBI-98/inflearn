@@ -1,0 +1,4 @@
+#git hooks module
+node_modules/
+package.json
+package-lock.json
