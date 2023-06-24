@@ -88,6 +88,22 @@ class CafeKioskTest {
         assertThat(cafeKiosk.getBeverages()).isEmpty();
     }
 
+    // tdd
+    @Test
+    void calculateTotalPrice(){
+        CafeKiosk cafeKiosk = new CafeKiosk();
+        Americano americano = new Americano();
+        Latte latte = new Latte();
+
+        cafeKiosk.add(americano);
+        cafeKiosk.add(latte);
+
+        // 프로덕션 코드보다 테스트 코드를 먼저 작성, 관점의 변화
+        int totalPrice = cafeKiosk.calculateTotalPrice();
+
+        assertThat(totalPrice).isEqualTo(8500);
+    }
+
     @DisplayName("주문가능시간 관리")
     @Test
     public void createOrder() throws Exception{
