@@ -1,4 +1,4 @@
-package sample.cafekiosk.spring.api.service;
+package sample.cafekiosk.spring.api.service.product;
 
 import java.util.List;
 import java.util.stream.Collectors;
