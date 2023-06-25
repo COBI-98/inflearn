@@ -11,7 +11,7 @@ import sample.cafekiosk.unit.order.Order;
 
 class CafeKioskTest {
 
-    @DisplayName("수량확인")
+    @DisplayName("음료 1개를 추가하면 주문 목록에 담긴다.") // bdd
     @Test
     public void add() throws Exception{
         //given
@@ -89,6 +89,7 @@ class CafeKioskTest {
     }
 
     // tdd
+    @DisplayName("주문 목록에 담긴 상품들의 총 금액을 계산할 수 있다. ")
     @Test
     void calculateTotalPrice(){
         CafeKiosk cafeKiosk = new CafeKiosk();
