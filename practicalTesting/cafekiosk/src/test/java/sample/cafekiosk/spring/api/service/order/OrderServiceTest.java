@@ -9,7 +9,10 @@ import static sample.cafekiosk.spring.domain.product.ProductType.BOTTLE;
 import static sample.cafekiosk.spring.domain.product.ProductType.HANDMADE;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
