@@ -13,7 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import sample.cafekiosk.spring.domain.product.Product;
 import sample.cafekiosk.spring.domain.product.ProductRepository;
 
-@SpringBootTest
 class OrderTest {
 
     @Autowired

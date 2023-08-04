@@ -16,21 +16,13 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import sample.cafekiosk.spring.ControllerTestSupport;
 import sample.cafekiosk.spring.api.controller.order.request.OrderCreateRequest;
 import sample.cafekiosk.spring.api.service.order.OrderService;
 
-@ActiveProfiles("test")
-@WebMvcTest(controllers = OrderController.class)
-class OrderControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+class OrderControllerTest extends ControllerTestSupport {
 
-    @Autowired
-    private ObjectMapper objectMapper;
-
-    @MockBean
-    private OrderService orderService;
 
     @DisplayName("신규 주문을 등록한다.")
     @Test

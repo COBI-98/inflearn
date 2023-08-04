@@ -14,12 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
+import sample.cafekiosk.spring.IntegrationTestSupport;
 
-@ActiveProfiles("test")
-@SpringBootTest
+//@ActiveProfiles("test")
+//@SpringBootTest
 @Transactional // 문제발생야기 (테스트와 구현의 transactional 주기 확인
 //@DataJpaTest 속도가 빠르지만 SpringBootTest 좋음
-class ProductRepositoryTest {
+class ProductRepositoryTest extends IntegrationTestSupport {
 
     @Autowired
     private ProductRepository productRepository;
@@ -106,13 +107,12 @@ class ProductRepositoryTest {
 
     private Product createProduct(String productNumber, ProductType type, ProductSellingStatus sellingStatus,
                                          String name, int price) {
-        Product product1 = Product.builder()
+        return Product.builder()
                 .productNumber(productNumber)
                 .type(type)
                 .sellingStatus(sellingStatus)
                 .name(name)
                 .price(price)
                 .build();
-        return product1;
     }
 }
