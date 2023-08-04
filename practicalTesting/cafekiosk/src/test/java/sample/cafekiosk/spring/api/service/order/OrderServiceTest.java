@@ -47,13 +47,14 @@ class OrderServiceTest extends IntegrationTestSupport {
 
     @AfterEach
     void tearDown() {
-        orderProductRepository.deleteAllInBatch();
+        orderProductRepository.deleteAllInBatch(); // Transactional 어려운경우 수동
         productRepository.deleteAllInBatch();
         orderRepository.deleteAllInBatch();
 
-//        orderProductRepository.deleteAll(); //
+//        orderProductRepository.deleteAll(); 필요 x
+
+//        orderRepository.deleteAll();  연관삭제.
 //        productRepository.deleteAll();
-//        orderRepository.deleteAll();
 
 
         stockRepository.deleteAllInBatch();
