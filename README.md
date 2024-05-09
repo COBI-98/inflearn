@@ -4,7 +4,7 @@
 
 IDE : IntelliJ <br>
 SpringBoot : 2.7.9 <br>
-Language : Java <br>
+Language : Java (17) <br>
 Test api : Postman <br>
 SSR : Thymeleaf <br>
 Git : Fork <br> <br>
@@ -76,6 +76,15 @@ API 개발 고급
   + 지연로딩과 조회성능 최적화
   + 컬렉션 조회 최적화  
   + OSIV와 성능 최적화
+  + JPA + QueryDSL
 
-JPA + QueryDSL
-  
+<br>
+
+## Practical Testing: 실용적인 테스트 가이드
+Spring & JPA 기반 테스트
+  + TDD: Test Driven Development
+  + 레이어드 아키텍처 별 API 설계
+  + Mocking 프레임워크 Mockito 테스트 코드
+  + API 문서 자동화 (REST Docs)
+
+<br>
