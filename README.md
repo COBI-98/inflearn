@@ -4,7 +4,7 @@
 
 IDE : IntelliJ <br>
 SpringBoot : 2.7.9 <br>
-Language : Java <br>
+Language : Java (17) <br>
 Test api : Postman <br>
 SSR : Thymeleaf <br>
 Git : Fork <br> <br>
@@ -88,3 +88,22 @@ Spring & JPA 기반 테스트
   + API 문서 자동화 (REST Docs)
 
 <br>
+
+## 김영한의 실전 자바 - 중급 1편
+객체지향 개념(OOP)
+ + Object 클래스
+ + 불변 객체
+ + String, 래퍼, Class 클래스
+ + 열거형 : ENUM
+ + 날짜와 시간
+ + 중첩 클래스, 내부 클래스
+ + 예외 처리
+
+<br>
+
+## 김영한의 실전 자바 - 중급 1편
+제네릭과 컬렉션
+  + 제네릭
+  + 컬렉션 프레임워크
+     + 순회, 정렬, 전체   
+
