@@ -18,6 +18,7 @@ public abstract class RestDocsSupport {
     protected MockMvc mockMvc;
     protected ObjectMapper objectMapper = new ObjectMapper();
 
+
     // mockmvc 수동 설정 / 스프링 서버 호출
 //    @BeforeEach
 //    void setUp(WebApplicationContext webApplicationContext,

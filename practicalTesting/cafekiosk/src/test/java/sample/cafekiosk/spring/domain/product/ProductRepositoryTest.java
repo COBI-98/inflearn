@@ -49,6 +49,17 @@ class ProductRepositoryTest extends IntegrationTestSupport {
 
     }
 
+    @DisplayName("테스트")
+    @Test
+    void woowa_test() throws Exception{
+        //given
+
+
+        //when
+
+        //then
+    }
+
     @DisplayName("상품번호 리스트로 상품들을 조회한다.")
     @Test
     void findAllByProductNumbersIn() throws Exception {

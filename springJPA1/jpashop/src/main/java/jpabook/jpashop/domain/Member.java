@@ -21,7 +21,6 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-//    @NotEmpty 별도의 dto를 활용하여 설정해주는것이 정석
     private String name;
 
     @Embedded
