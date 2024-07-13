@@ -14,8 +14,10 @@ public class ObjectPolyExample1 {
         //obj.sound(); //컴파일 오류, Object는 sound()가 없다.
         //obj.move(); //컴파일 오류, Object는 move()가 없다.
 
+
         //객체에 맞는 다운캐스팅 필요
         if (obj instanceof Dog dog) {
+            //((Dog)obj);
             dog.sound();
         } else if (obj instanceof Car car) {
             car.move();
