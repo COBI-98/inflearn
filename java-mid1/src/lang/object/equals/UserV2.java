@@ -16,6 +16,14 @@ public class UserV2 {
         UserV2 user = (UserV2) obj;
         return id.equals(user.id);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof UserV2 userV2){
+            return id.equals(userV2.id);
+        }
+        return false;
+    }
 */
 
     @Override
